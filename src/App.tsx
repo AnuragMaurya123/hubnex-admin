@@ -9,12 +9,10 @@ function App() {
   return (
     <main className="">
       <Routes>
-        {/* PUBLIC ROUTE */}
         <Route element={<AuthLayout />}>
           <Route path="/sign-in" element={<Signin />} />
         </Route>
 
-        {/* PRIVATE ROUTE */}
         <Route element={<RootLayout />}>
           <Route index element={<Dashboard />} />
         </Route>

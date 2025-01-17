@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import { axiosClient } from "@/api/axiosClient";
@@ -33,7 +34,6 @@ export const loginUser = createAsyncThunk(
   ) => {
     try {
       const response = await axiosClient.post("/api/admin/login", credentials); 
-      console.log(response);
       // Adjust endpoint as necessary
       return response.data; // Assuming the response contains user data and a token
     } catch (error: any) {
@@ -74,9 +74,7 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
         state.isAuthenticated = true;
-        state.user = action.payload.user; // Ensure the API returns user data
-        console.log(state.user);
-        
+        state.user = action.payload.user; // Ensure the API returns user data       
         state.token = action.payload.token; // Ensure the API returns token
         localStorage.setItem("token", action.payload.token);
         localStorage.setItem("user", JSON.stringify(action.payload.user));
@@ -84,7 +82,7 @@ const authSlice = createSlice({
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string; // Set the error message
-      });
+      })
   },
 });
 

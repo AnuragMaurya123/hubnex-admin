@@ -33,8 +33,7 @@ export const getSubmissions = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosClient.get("/api/from/fromDetails");
-      console.log(response.data);
-      
+ 
       return response.data;
     } catch (error: any) {
       console.log(error);
@@ -48,7 +47,7 @@ export const deleteSubmission = createAsyncThunk(
   "submissions/deleteSubmission",
   async (submissionId: string, { rejectWithValue }) => {
     try {
-      const response = await axiosClient.delete(`/submission/${submissionId}`);
+      const response = await axiosClient.delete(`/api/from/deleteDetails/${submissionId}`);
       return response.data?._id;
     } catch (error: any) {
       console.log(error);    

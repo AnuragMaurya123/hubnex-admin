@@ -29,7 +29,6 @@ export default function Dashboard() {
     (state: RootState) => state.submission
   );
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
-  console.log(submissions);
   
   useEffect(() => {
     if (!isAuthenticated) {

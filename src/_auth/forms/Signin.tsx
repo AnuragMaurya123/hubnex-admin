@@ -74,7 +74,7 @@ export default function Signin() {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input autoComplete="email" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -90,6 +90,7 @@ export default function Signin() {
                       <div className="relative">
                         <Input
                           type={showPassword ? "text" : "password"} // Toggle between text and password types
+                          autoComplete="off"
                           {...field}
                         />
                         <button
